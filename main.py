@@ -1,6 +1,6 @@
 from assistant import ask_assistant
 
-
+messages = []
 while True:
     user_input = input("You: ")
     if user_input == "":
@@ -10,5 +10,8 @@ while True:
         print("Goodbye!")
         break
 
-    answer = ask_assistant(user_input)
+    messages.append({"role": "user", "content": user_input})
+    print("Searching...", flush=True)
+    answer = ask_assistant(messages)
+    messages.append({"role": "assistant", "content": answer.choices[0].message.content})
     print("Assistant:", answer.choices[0].message.content)

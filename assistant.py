@@ -10,13 +10,10 @@ client = OpenAI(
 )
 
 
-def ask_assistant(user_input):
+def ask_assistant(messages):
     response = client.chat.completions.create(
         model=os.getenv("MODEL"),
-        messages=[
-            {"role": "system", "content": "You are a helpful assistant."},
-            {"role": "user", "content": user_input}
-        ]
+        messages=messages   
     )
 
     return response
