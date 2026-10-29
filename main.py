@@ -1,5 +1,5 @@
 from assistant import ask_assistant
-
+from tool_manager import execute_tool
 messages = []
 choices ={
     "1":"You are a Teacher.You have to explain in such a way that any dumb can understand",
@@ -36,6 +36,11 @@ while True:
     elif user_input.lower() == "exit":
         print("Goodbye!")
         break
+        
+    tool_result = execute_tool(user_input)
+    if (tool_result):
+        print("Asistant:",tool_result)
+        continue     
 
     messages.append({"role": "user", "content": user_input})
     print("Thinking...", flush=True)
