@@ -26,3 +26,12 @@ def generate_secure_password(length=12):
     characters = string.ascii_letters + string.digits + string.punctuation
     return ''.join(secrets.choice(characters) for i in range(length)) 
 
+# Read the file from syatem
+def read_file(file_name):
+    try:
+            with open(file_name,'r') as file:
+                content = file.read()
+                return content
+    except FileNotFoundError:
+            return "Error:File not found!"    
+        

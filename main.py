@@ -37,12 +37,13 @@ while True:
         print("Goodbye!")
         break
         
-    tool_result = execute_tool(user_input)
-    if (tool_result):
-        print("Asistant:",tool_result)
+    tool_response  = execute_tool(user_input)
+    
+    if (tool_response["is_response"]):
+        print("Asistant:",tool_response["content"])
         continue     
 
-    messages.append({"role": "user", "content": user_input})
+    messages.append({"role": "user", "content": tool_response["content"]})
     print("Thinking...", flush=True)
     answer = ask_assistant(messages)
     messages.append({"role": "assistant", "content": answer.choices[0].message.content})
