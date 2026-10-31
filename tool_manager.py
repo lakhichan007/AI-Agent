@@ -15,7 +15,7 @@ def execute_tool(user_input):
         filename = next((word for word in user_input.split() if word.endswith(".txt")),None)
         if(filename):
             data = read_file(f"data/{filename}")
-            filecontent  = f"Plese eplain the Document:{data}"
+            filecontent  = f"Please explain the Document:{data} and whenever question is asked you have to reply only document specific, nothing else. If no data in document simply ask I couldn't find information in this Document."
         else:
             filecontent = user_input
         return {"content":filecontent,"is_response":False}        
